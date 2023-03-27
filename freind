@@ -1,0 +1,69 @@
+1.
+#include <iostream>
+
+using namespace std;
+class CTest {
+  	int x;
+  public:
+    CTest(int a=8):x(a){}
+    friend int main();
+};
+
+int main () {
+    CTest me;
+    cout << me.x << endl;
+    return 0;
+}
+
+
+2.
+
+#include <iostream>
+using namespace std;
+class Cnt {
+public:
+    static int cnt;
+    void inc() { 
+    cnt++; 
+    }
+};
+
+int Cnt::cnt=0;
+
+int main() {
+    Cnt c;
+    c.inc();
+    c.inc();
+    c.inc();
+    c.inc();
+    cout << "횟수: " << Cnt::cnt << endl;
+    return 0;
+}
+
+3.
+
+#include<iostream>
+using namespace std;
+
+class CPoly{
+protected:
+    int w, h;
+};
+
+class CRect : public CPoly{
+public:
+    CRect(){
+        w = 2;
+        h = 3;
+    }
+    int Area(){
+        return w * h;
+    }   
+};
+
+int main(){
+    CRect r;
+    CRect* p = &r;
+    cout << p->Area();
+    return 0;
+}
